@@ -13,7 +13,7 @@
 
 Lo primero será actualizar el sistema para tener todo listo y evitar fallos.
 
-![imagen1](imagen1.png)
+![imagen1](imagenes2/Imagen1.png)
 
 Instalamos los paquetes requeridos para docker.
 
