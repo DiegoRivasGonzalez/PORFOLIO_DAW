@@ -56,7 +56,7 @@ Se edita el archivo "/etc/apache2/envvars" con un editor como nano. Dentro de es
 archivo se modifican las líneas para que en lugar de "www-data" se use tu propio usuario
 y grupo. Por ejemplo:
 
-![imagen1.jpg](imagen1.jpg)
+![imagen1.png](imagen1.png)
 
 ### Habilitar módulos de Apache
 
@@ -79,7 +79,7 @@ apache2".
 
 Una vez reiniciado hacemos el comando para comprobar si esta activo el servicio.
 
-![imagen2.jpg](imagen2.jpg)
+![imagen2.png](imagen2.png)
 
 ---
 
@@ -87,7 +87,7 @@ Una vez reiniciado hacemos el comando para comprobar si esta activo el servicio.
 
 En la barra de búsqueda ponemos "localhost/8080" y nos saldrá la siguiente página.
 
-![imagen3.jpg](imagen3.jpg)
+![imagen3.png](imagen3.png)
 
 ---
 
@@ -101,11 +101,11 @@ cd /var/www/html ls nano index.html
 
 Una vez dentro modificamos el contenido del mismo.
 
-![imagen4.jpg](imagen4.jpg)
+![imagen4.png](imagen4.png)
 
 Ahora si escribimos "localhost" en el navegador nos saldrá nuestra página.
 
-![imagen5.jpg](imagen5.jpg)
+![imagen5.png](imagen5.png)
 
 ---
 
@@ -115,11 +115,11 @@ Ahora vamos a crear una carpeta llamada gci.
 
 sudo mkdir /var/www/gci/
 
-![imagen6.jpg](imagen6.jpg)
+![imagen6.png](imagen6.png)
 
 Dentro de la carpeta creamos el archivo html de prueba.
 
-![imagen7.jpg](imagen7.jpg)
+![imagen7.png](imagen7.png)
 
 Ahora ejecutamos los siguientes comandos y cambiamos las líneas del archivo gci.conf.
 
@@ -131,21 +131,20 @@ cd /etc/apache2/sites-available/ sudo cp 000-default.conf gci.conf sudo nano gci
 
 Dentro de este archivo ponemos lo siguiente.
 
-![imagen8.jpg](imagen8.jpg)
+![imagen8.png](imagen8.png)
 
 Y habilitamos este conf con el siguiente comando además de reiniciar el servidor apache para que
 aplique los cambios.
 
-sudo a2ensite gci.conf systemctl reload apache2 sudo systemctl daemon-reload sudo systemctl restart apache2 systemctl status apache2
-
-
+![imagen9.png](imagen9.png)
+![imagen10.png](imagen10.png)
 ---
 
 # Comprobación
 
 Ponemos en el buscador gci.prueba.com y nos saldrá la página de prueba.
 
-![imagen9.jpg](imagen9.jpg)
+![imagen11.png](imagen11.png)
 
 ---
 
