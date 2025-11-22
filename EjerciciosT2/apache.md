@@ -137,7 +137,9 @@ Y habilitamos este conf con el siguiente comando además de reiniciar el servido
 aplique los cambios.
 
 ![imagen9.png](imagen9.png)
+
 ![imagen10.png](imagen10.png)
+
 ---
 
 # Comprobación
