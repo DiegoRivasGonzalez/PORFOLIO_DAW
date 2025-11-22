@@ -100,8 +100,6 @@ Para eso ponemos el siguiente comando y abrimos con nano el archivo html.
 
 cd /var/www/html ls nano index.html
 
-Código
-
 Una vez dentro modificamos el contenido del mismo.
 
 ![imagen4.jpg](imagen4.jpg)
@@ -118,8 +116,6 @@ Ahora vamos a crear una carpeta llamada gci.
 
 sudo mkdir /var/www/gci/
 
-Código
-
 ![imagen6.jpg](imagen6.jpg)
 
 Dentro de la carpeta creamos el archivo html de prueba.
@@ -129,8 +125,6 @@ Dentro de la carpeta creamos el archivo html de prueba.
 Ahora ejecutamos los siguientes comandos y cambiamos las líneas del archivo gci.conf.
 
 cd /etc/apache2/sites-available/ sudo cp 000-default.conf gci.conf sudo nano gci.conf
-
-Código
 
 ---
 
@@ -145,7 +139,6 @@ aplique los cambios.
 
 sudo a2ensite gci.conf systemctl reload apache2 sudo systemctl daemon-reload sudo systemctl restart apache2 systemctl status apache2
 
-Código
 
 ---
 
