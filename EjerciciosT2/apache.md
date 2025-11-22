@@ -79,7 +79,7 @@ apache2".
 
 Una vez reiniciado hacemos el comando para comprobar si esta activo el servicio.
 
-![imagen2.png](imagen2.png)
+![imagen2.png](/imagenes3/imagen2.png)
 
 ---
 
@@ -87,7 +87,7 @@ Una vez reiniciado hacemos el comando para comprobar si esta activo el servicio.
 
 En la barra de búsqueda ponemos "localhost/8080" y nos saldrá la siguiente página.
 
-![imagen3.png](imagen3.png)
+![imagen3.png](/imagenes3/imagen3.png)
 
 ---
 
@@ -101,11 +101,11 @@ cd /var/www/html ls nano index.html
 
 Una vez dentro modificamos el contenido del mismo.
 
-![imagen4.png](imagen4.png)
+![imagen4.png](/imagenes3/imagen4.png)
 
 Ahora si escribimos "localhost" en el navegador nos saldrá nuestra página.
 
-![imagen5.png](imagen5.png)
+![imagen5.png](/imagenes3/imagen5.png)
 
 ---
 
@@ -115,11 +115,11 @@ Ahora vamos a crear una carpeta llamada gci.
 
 sudo mkdir /var/www/gci/
 
-![imagen6.png](imagen6.png)
+![imagen6.png](/imagenes3/imagen6.png)
 
 Dentro de la carpeta creamos el archivo html de prueba.
 
-![imagen7.png](imagen7.png)
+![imagen7.png](/imagenes3/imagen7.png)
 
 Ahora ejecutamos los siguientes comandos y cambiamos las líneas del archivo gci.conf.
 
@@ -131,14 +131,14 @@ cd /etc/apache2/sites-available/ sudo cp 000-default.conf gci.conf sudo nano gci
 
 Dentro de este archivo ponemos lo siguiente.
 
-![imagen8.png](imagen8.png)
+![imagen8.png](/imagenes3/imagen8.png)
 
 Y habilitamos este conf con el siguiente comando además de reiniciar el servidor apache para que
 aplique los cambios.
 
-![imagen9.png](imagen9.png)
+![imagen9.png](/imagenes3/imagen9.png)
 
-![imagen10.png](imagen10.png)
+![imagen10.png](/imagenes3/imagen10.png)
 
 ---
 
@@ -146,7 +146,7 @@ aplique los cambios.
 
 Ponemos en el buscador gci.prueba.com y nos saldrá la página de prueba.
 
-![imagen11.png](imagen11.png)
+![imagen11.png](/imagenes3/imagen11.png)
 
 ---
 
