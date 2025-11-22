@@ -1,5 +1,6 @@
-Diego Rivas González 2ºDAW
+# Servidor Web Apache
 
+Diego Rivas González 2ºDAW
 ---
 
 ## Sumario
@@ -23,11 +24,9 @@ Diego Rivas González 2ºDAW
 | Comprobación | 11 |
 | BIBLIOGRAFÍA | 11 |
 
-Diego Rivas González 2ºDAW
 
 ---
 
-## Servidor Web Apache
 
 ### Resumen
 
