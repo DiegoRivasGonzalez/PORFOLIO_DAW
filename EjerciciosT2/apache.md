@@ -56,7 +56,7 @@ Se edita el archivo "/etc/apache2/envvars" con un editor como nano. Dentro de es
 archivo se modifican las líneas para que en lugar de "www-data" se use tu propio usuario
 y grupo. Por ejemplo:
 
-![imagen1.png](imagen1.png)
+![imagen1.png](/imagenes3/imagen1.png)
 
 ### Habilitar módulos de Apache
 
