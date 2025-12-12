@@ -1,166 +1,141 @@
-markdown
-# Generadores de Documentación Diego Rivas González 2º DAW
+# Servidor Web Apache
 
-Diego Rivas González 2ºDAW
+## Resumen
+Este documento muestra cómo empezar a usar el servidor web Apache, cómo instalarlo desde la consola de comandos, comprobar que está activo y visualizar el resultado en el navegador.
 
----
+## Actualizar el sistema
+Primero actualizamos el sistema:
 
-## Sumario
+```
+sudo apt update
+sudo apt upgrade -y
+```
 
-| Sección | Página |
-|---------|--------|
-| Servidor Web Apache | 3 |
-| Resumen | 3 |
-| Actualizar el sistema | 3 |
-| Instalar Apache | 3 |
-| Verificar la instalación | 3 |
-| Configurar usuario y grupo de Apache | 3 |
-| Habilitar módulos de Apache | 4 |
-| Establecer permisos del directorio de documentos. | 4 |
-| Reiniciar Apache | 4 |
-| Comprobar estatus. | 4 |
-| Comprobación | 6 |
-| Prueba con pagina personalizada | 7 |
-| Archivo GCI | 9 |
-| Archivo .conf | 10 |
-| Comprobación | 11 |
-| BIBLIOGRAFÍA | 11 |
+## Instalar Apache
+Instalamos Apache:
 
-Diego Rivas González 2ºDAW
+```
+sudo apt install apache2 -y
+```
 
----
+## Verificar la instalación
+Para comprobar que Apache está funcionando obtenemos la IP del equipo:
 
-## Servidor Web Apache
+```
+hostname -I
+```
 
-### Resumen
+Después introducimos esa IP en el navegador y veremos la página de bienvenida de Apache.
 
-Este documento es una manera de ver como empezar a usar el servidor web de Apache
-viendo como se instala desde la consola de comandos, que esta activo y el resultado de
-como se ve una pagina una vez esta en funcionamiento.
+![imagen1.jpg](/imagenesHTTPS/imagen1.png)
 
-### Actualizar el sistema
+## Configurar usuario y grupo de Apache
+Editamos el archivo:
 
-Primero hay que actualizar el sistema. Para ello se utiliza el comando sudo "apt update" y
-después sudo "apt upgrade" -y para instalar las actualizaciones disponibles.
+```
+sudo nano /etc/apache2/envvars
+```
 
-### Instalar Apache
+Modificamos las líneas donde aparezca `www-data` para usar nuestro propio usuario y grupo.
 
-Una vez actualizado, se instala el servidor web Apache con el comando sudo "apt install
-apache2 -y".
+![imagen3.jpg](/imagenesHTTPS/imagen2.png)
 
-### Verificar la instalación
+## Habilitar módulos de Apache
+Activamos módulos útiles:
 
-Para comprobar que Apache está funcionando, se puede obtener la dirección IP del
-equipo con "hostname -l". Luego, al escribir esa IP en el navegador, debería aparecer la
-página de bienvenida de Apache.
+```
+sudo a2enmod headers
+sudo a2enmod rewrite
+```
 
-### Configurar usuario y grupo de Apache
+## Establecer permisos del directorio de documentos
+Para dar permisos al usuario actual sobre `/var/www/html`:
 
-Se edita el archivo "/etc/apache2/envvars" con un editor como nano. Dentro de ese
-archivo se modifican las líneas para que en lugar de "www-data" se use tu propio usuario
-y grupo. Por ejemplo:
+```
+sudo chown -R $USER:$USER /var/www/html
+```
 
-![imagen1.jpg](imagen1.jpg)
+## Reiniciar Apache
+Reiniciamos el servicio:
 
-### Habilitar módulos de Apache
+```
+sudo systemctl restart apache2
+```
 
-Se activan algunos módulos útiles con los comandos "sudo a2enmod headers y sudo
-a2enmod rewrite".
+## Comprobar estatus
+Comprobamos que el servicio está activo:
 
-### Establecer permisos del directorio de documentos
+![imagen3.jpg](/imagenesHTTPS/imagen3.png)
 
-Para que el usuario actual tenga permisos sobre la carpeta donde se guardan las páginas, se usa el
-comando "sudo chown -R $USER : $USER /var /www/html".
+## Comprobación
+En el navegador escribimos:
 
-### Reiniciar Apache
+```
+localhost:8080
+```
 
-Finalmente, se reinicia el servicio para aplicar los cambios con "sudo systemctl restart
-apache2".
+Y veremos la página por defecto de Apache.
 
----
+![imagen4.jpg](/imagenesHTTPS/imagen4.png)
 
-### Comprobar estatus
+## Prueba con página personalizada
+Ahora modificamos la página HTML principal:
 
-Una vez reiniciado hacemos el comando para comprobar si esta activo el servicio.
+```
+sudo nano /var/www/html/index.html
+```
 
-![imagen2.jpg](imagen2.jpg)
+Editamos el contenido del archivo.
 
----
+![imagen5.jpg](/imagenesHTTPS/imagen5.png)
 
-# Comprobación
+Después recargamos el navegador escribiendo:
 
-En la barra de búsqueda ponemos "localhost/8080" y nos saldrá la siguiente página.
+```
+localhost
+```
 
-![imagen3.jpg](imagen3.jpg)
+Y aparecerá nuestra página personalizada.
 
----
+![imagen6.jpg](/imagenesHTTPS/imagen6.png)
 
-# Prueba con pagina personalizada
+## Archivo GCI
+Creamos una carpeta llamada `gci`:
 
-Ahora vamos a cambiar la página que nos aparecía antes modificando el archivo html que tiene.
+```
+mkdir /var/www/html/gci
+```
 
-Para eso ponemos el siguiente comando y abrimos con nano el archivo html.
+Dentro creamos un archivo HTML de prueba.
 
-cd /var/www/html ls nano index.html
+```
+sudo nano /var/www/html/gci/index.html
+```
 
-Código
+Luego editamos el archivo de configuración `gci.conf`.
 
-Una vez dentro modificamos el contenido del mismo.
+![imagen7.jpg](/imagenesHTTPS/imagen7.png)
 
-![imagen4.jpg](imagen4.jpg)
+## Archivo .conf
+Dentro del archivo `gci.conf` colocamos la configuración necesaria.
 
-Ahora si escribimos "localhost" en el navegador nos saldrá nuestra página.
+Habilitamos el sitio:
 
-![imagen5.jpg](imagen5.jpg)
+```
+sudo a2ensite gci.conf
+sudo systemctl restart apache2
+```
 
----
+## Comprobación
+En el navegador escribimos:
 
-# Archivo GCI
+```
+gci.prueba.com
+```
 
-Ahora vamos a crear una carpeta llamada gci.
+Y aparecerá la página de prueba.
 
-sudo mkdir /var/www/gci/
-
-Código
-
-![imagen6.jpg](imagen6.jpg)
-
-Dentro de la carpeta creamos el archivo html de prueba.
-
-![imagen7.jpg](imagen7.jpg)
-
-Ahora ejecutamos los siguientes comandos y cambiamos las líneas del archivo gci.conf.
-
-cd /etc/apache2/sites-available/ sudo cp 000-default.conf gci.conf sudo nano gci.conf
-
-Código
-
----
-
-# Archivo .conf
-
-Dentro de este archivo ponemos lo siguiente.
-
-![imagen8.jpg](imagen8.jpg)
-
-Y habilitamos este conf con el siguiente comando además de reiniciar el servidor apache para que
-aplique los cambios.
-
-sudo a2ensite gci.conf systemctl reload apache2 sudo systemctl daemon-reload sudo systemctl restart apache2 systemctl status apache2
-
-Código
-
----
-
-# Comprobación
-
-Ponemos en el buscador gci.prueba.com y nos saldrá la página de prueba.
-
-![imagen9.jpg](imagen9.jpg)
-
----
-
-# BIBLIOGRAFÍA
-
+## Bibliografía
 TUTORIAL GCI: https://ubuntu.com/tutorials/install-and-configure-apache#3-creating-your-own-website  
 TUTORIAL INSTALAR APACHE: https://foro.puntocomunica.com/viewtopic.php?t=312
+
