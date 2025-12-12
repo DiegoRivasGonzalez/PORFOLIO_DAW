@@ -1,141 +1,124 @@
-# Servidor Web Apache
+# Apache HTTPS
 
-## Resumen
-Este documento muestra cómo empezar a usar el servidor web Apache, cómo instalarlo desde la consola de comandos, comprobar que está activo y visualizar el resultado en el navegador.
+## Introducción
+HTTPS (HyperText Transfer Protocol Secure) es la versión segura de HTTP.
 
-## Actualizar el sistema
-Primero actualizamos el sistema:
+Utiliza el protocolo SSL/TLS para cifrar la comunicación entre el cliente (navegador) y el servidor web.
 
-```
-sudo apt update
-sudo apt upgrade -y
-```
+El cifrado garantiza:
 
-## Instalar Apache
-Instalamos Apache:
+- **Confidencialidad:** los datos transmitidos no pueden ser leídos por terceros.  
+- **Integridad:** evita que los datos se alteren durante la transmisión.  
+- **Autenticación:** el certificado SSL/TLS asegura que el usuario se conecta al servidor legítimo.
 
-```
-sudo apt install apache2 -y
-```
+Importancia de HTTPS:
 
-## Verificar la instalación
-Para comprobar que Apache está funcionando obtenemos la IP del equipo:
+- Protege contra ataques "man-in-the-middle".
+- Aumenta la confianza del usuario.
+- Es necesario para APIs seguras, OAuth y HTTP/2.
+- Mejora el posicionamiento SEO.
 
-```
-hostname -I
-```
+---
 
-Después introducimos esa IP en el navegador y veremos la página de bienvenida de Apache.
+## Tipos de certificados SSL/TLS
+
+### Certificado autofirmado
+Generado por el propio administrador del servidor.
+
+**Ventajas:**
+- Gratuito y rápido de generar.
+- Útil en entornos de pruebas.
+
+**Desventajas:**
+- Los navegadores muestran advertencias de seguridad.
+- No recomendable para producción.
+
+---
+
+### Certificado emitido por una CA confiable
+Firmado por una Autoridad de Certificación (CA).
+
+**Ventajas:**
+- Reconocido automáticamente por navegadores.
+- Aumenta la confianza del usuario.
+
+**Tipos:**
+- **DV (Domain Validation)**
+- **OV (Organization Validation)**
+- **EV (Extended Validation)**
+
+Let's Encrypt ofrece certificados gratuitos y automatizados.
+
+---
+
+## Ejecución técnica HTTPS
+Habilitamos módulos SSL y headers y comprobamos el estado.
 
 ![imagen1.jpg](/imagenesHTTPS/imagen1.png)
 
-## Configurar usuario y grupo de Apache
-Editamos el archivo:
+---
 
-```
-sudo nano /etc/apache2/envvars
-```
+## Generar certificados SSL/TLS
 
-Modificamos las líneas donde aparezca `www-data` para usar nuestro propio usuario y grupo.
+### Opción A
+Creamos un certificado automático con el siguiente comando y rellenamos la información solicitada.
 
-![imagen3.jpg](/imagenesHTTPS/imagen2.png)
+![imagen2.jpg](/imagenesHTTPS/imagen2.png)
 
-## Habilitar módulos de Apache
-Activamos módulos útiles:
+---
 
-```
-sudo a2enmod headers
-sudo a2enmod rewrite
-```
-
-## Establecer permisos del directorio de documentos
-Para dar permisos al usuario actual sobre `/var/www/html`:
-
-```
-sudo chown -R $USER:$USER /var/www/html
-```
-
-## Reiniciar Apache
-Reiniciamos el servicio:
-
-```
-sudo systemctl restart apache2
-```
-
-## Comprobar estatus
-Comprobamos que el servicio está activo:
+## Configurar VirtualHost en puerto 443
+Creamos el fichero `ssl.conf` si no existe y añadimos las siguientes líneas:
 
 ![imagen3.jpg](/imagenesHTTPS/imagen3.png)
 
-## Comprobación
-En el navegador escribimos:
+Luego lo habilitamos:
 
 ```
-localhost:8080
+sudo a2ensite ssl.conf
 ```
 
-Y veremos la página por defecto de Apache.
+Editamos el archivo `.conf` y añadimos `ServerName` y `Redirect`.
 
 ![imagen4.jpg](/imagenesHTTPS/imagen4.png)
 
-## Prueba con página personalizada
-Ahora modificamos la página HTML principal:
-
-```
-sudo nano /var/www/html/index.html
-```
-
-Editamos el contenido del archivo.
+Reiniciamos Apache y comprobamos el estado:
 
 ![imagen5.jpg](/imagenesHTTPS/imagen5.png)
 
-Después recargamos el navegador escribiendo:
+---
+
+## Comprobaciones
+Al escribir en el navegador:
 
 ```
 localhost
 ```
 
-Y aparecerá nuestra página personalizada.
+Aparece nuestra página index.
 
 ![imagen6.jpg](/imagenesHTTPS/imagen6.png)
 
-## Archivo GCI
-Creamos una carpeta llamada `gci`:
+También comprobamos por consola con:
 
 ```
-mkdir /var/www/html/gci
+curl -I https://localhost
 ```
 
-Dentro creamos un archivo HTML de prueba.
+Y obtenemos:
 
 ```
-sudo nano /var/www/html/gci/index.html
+HTTP/1.1 200 OK
 ```
-
-Luego editamos el archivo de configuración `gci.conf`.
-
 ![imagen7.jpg](/imagenesHTTPS/imagen7.png)
 
-## Archivo .conf
-Dentro del archivo `gci.conf` colocamos la configuración necesaria.
+---
 
-Habilitamos el sitio:
-
-```
-sudo a2ensite gci.conf
-sudo systemctl restart apache2
-```
-
-## Comprobación
-En el navegador escribimos:
-
-```
-gci.prueba.com
-```
-
-Y aparecerá la página de prueba.
-
-## Bibliografía
-TUTORIAL GCI: https://ubuntu.com/tutorials/install-and-configure-apache#3-creating-your-own-website  
-TUTORIAL INSTALAR APACHE: https://foro.puntocomunica.com/viewtopic.php?t=312
+## Conclusión
+- Apache no arrancaba al principio porque las rutas de los certificados no coincidían con los nombres correctos.
+- También hubo confusión al usar `index.html` como `ServerName` en vez de `localhost`.
+- Tras corregirlo, la configuración pasó `apachectl configtest` sin errores.
+- El navegador muestra advertencias por tratarse de un certificado autofirmado.
+- La redirección HTTP → HTTPS funciona correctamente.
+- El archivo `index.html` se sirve correctamente tanto en navegador como en `curl`.
 
