@@ -94,4 +94,4 @@ http://localhost:8080/helloworld/
 
 
 # CAPTURA DE DEMOSTRACION
-![tomcat.png](/imagenes4/tomcat.png)
+![tomcat.jpg](/Imagenes4/tomcat.png)
