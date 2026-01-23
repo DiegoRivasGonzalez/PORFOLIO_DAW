@@ -17,7 +17,7 @@ El archivo se encuentra en:
 
 Añadimos los roles y usuarios necesarios:
 
-![imagen0](/imagenes/imagen0.png)
+![imagen0](imagenes/imagen0.png)
 
 
 Y reiniciamos tomcat10.
@@ -42,7 +42,7 @@ Después de esto reiniciamos tomcat10.
 ## 3. Configurar HTTPS con un keystore y un conector SSL
 
 Creamos el keystore y le damos una contraseña para el almacén de claves:
-![imagen2](/imagenes/imagen2.png)
+![imagen2](imagenes/imagen2.png)
 
 
 Le damos permisos:
@@ -52,19 +52,19 @@ Le damos permisos:
 
 Ahora en el archivo `server.xml` añadimos el siguiente bloque:
 
-![imagen3](/imagenes/imagen3.png)
+![imagen3](imagenes/imagen3.png)
 
 
 Reiniciamos tomcat y hacemos una prueba en el navegador.
 
-![imagen4](/imagenes/imagen4.png)
+![imagen4](imagenes/imagen4.png)
 
 ---
 
 Y probamos si hemos restringido el acceso al manager y si se puede acceder con la contraseña que hemos puesto en el archivo `tomcat-users.xml`.
 
-![imagen5](/imagenes/imagen5.png)
-![imagen6](/imagenes/imagen6.png)
+![imagen5](imagenes/imagen5.png)
+![imagen6](imagenes/imagen6.png)
 
 ---
 
@@ -72,8 +72,8 @@ Y probamos si hemos restringido el acceso al manager y si se puede acceder con l
 
 Entramos al archivo de service y añadimos lo siguiente:
 
-![imagen7](/imagenes/imagen7.png)
+![imagen7](imagenes/imagen7.png)
 
 Después creamos el archivo de `catalina.policy` y añadimos lo siguiente.
 
-![imagen8](/imagenes/imagen8.png)
+![imagen8](imagenes/imagen8.png)
