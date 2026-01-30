@@ -27,7 +27,6 @@ Si no lo está, lo instalamos con:
 ## 2. Descargar la imagen oficial de Tomcat
 Descargamos desde Docker Hub la imagen más reciente de Tomcat:
 
-`docker pull tomcat:latest`
 
 ![imagen0](imagenes/imagen20.png)
 
