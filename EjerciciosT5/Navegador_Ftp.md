@@ -4,7 +4,7 @@
 
 Se procedió a testear el acceso al servidor local a través de **Mozilla Firefox** empleando la siguiente URL:
 
-`ftp://127.0.0.1:2121`
+`ftp://127.0.0.1:21`
 
 ### Resultado de la inspección:
 ![imagen0](imagenes/imagen23.png)
