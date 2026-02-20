@@ -13,7 +13,7 @@ Antes de comenzar, comprobamos que el servicio esté funcionando correctamente:
 
 Aunque muchas distribuciones ya incluyen el cliente `ftp`, instalamos las utilidades necesarias para asegurarnos:
 
-![imagen0](imagenes/imagen7.png)
+![imagen0](imagenes/imagen12.png)
 
 Con esto tendremos disponibles distintos clientes para realizar pruebas desde la terminal.
 
@@ -44,7 +44,7 @@ Después de autenticarnos, podemos ejecutar:
 - Descargar archivo: `get prueba.txt`
 - Cerrar sesión: `exit`
 
-![imagen0](imagenes/imagen7.png)
+![imagen0](imagenes/imagen13.png)
 
 ---
 
@@ -63,7 +63,7 @@ Una vez dentro:
 
 `lftp` ofrece una interfaz más avanzada y flexible que el cliente básico.
 
-![imagen0](imagenes/imagen7.png)
+![imagen0](imagenes/imagen14.png)
 
 ---
 
@@ -80,7 +80,7 @@ También podemos realizar operaciones FTP con `curl`:
 - Descargar archivo:
   `curl -u usuario1 -O ftp://10.0.2.15/prueba.txt`
 
-![imagen0](imagenes/imagen7.png)
+![imagen0](imagenes/imagen15.png)
 
 ---
 
