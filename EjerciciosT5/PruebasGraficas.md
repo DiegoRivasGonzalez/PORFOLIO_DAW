@@ -1,4 +1,4 @@
-# 📂 FileZilla: Comprobaciones con Cliente Gráfico
+# FileZilla: Comprobaciones con Cliente Gráfico
 
 ## 1. Instalación de FileZilla en Ubuntu
 
