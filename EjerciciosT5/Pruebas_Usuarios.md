@@ -35,7 +35,7 @@ Este archivo servirá para comprobar tanto subida como descarga.
 
 Conectamos al servidor:
 
-`ftp 10.0.2.15`
+`ftp localhost`
 
 Después de autenticarnos, podemos ejecutar:
 
@@ -52,7 +52,7 @@ Después de autenticarnos, podemos ejecutar:
 
 Establecemos conexión indicando el usuario:
 
-`lftp usuario1@10.0.2.15`
+`lftp usuario1@localhost`
 
 Una vez dentro:
 
@@ -72,13 +72,13 @@ Una vez dentro:
 También podemos realizar operaciones FTP con `curl`:
 
 - Listar archivos:
-  `curl -u usuario1 ftp://10.0.2.15/`
+  `curl -u usuario1 ftp://localhost/`
 
 - Subir archivo:
-  `curl -u usuario1 -T prueba.txt ftp://10.0.2.15/`
+  `curl -u usuario1 -T prueba.txt ftp://localhost/`
 
 - Descargar archivo:
-  `curl -u usuario1 -O ftp://10.0.2.15/prueba.txt`
+  `curl -u usuario1 -O ftp://localhost/prueba.txt`
 
 ![imagen0](imagenes/imagen15.png)
 
